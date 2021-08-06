@@ -29,8 +29,9 @@
 			</div>
 			<nav class="main__menu">
 				<ul class="nav__menu">
-					<li><a href="./index.html">Home</a></li>
-					<li><a href="./about.html">About</a></li>
+                <% if user_signed_in? %>
+                <li><%= link_to 'Home', root_path(current_user) %></li>
+				<li><%= link_to 'Upload a Photo', new_user_photo_path(current_user) %></li>
 					<li><a href="./gallery.html" class="menu--active">Gallery</a></li>
 					<li><a href="./blog.html">Blog</a>
 						<ul class="sub__menu">
@@ -38,6 +39,8 @@
 						</ul>
 					</li>
 					<li><a href="./contact.html">Contact</a></li>
+                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                    <% end %>
 				</ul>
 			</nav>
 		</div>

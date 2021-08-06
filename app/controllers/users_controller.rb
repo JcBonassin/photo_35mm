@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    layout 'profile'
+    layout 'profile' 
 
     def show    
     end 

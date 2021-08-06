@@ -16,4 +16,17 @@ class ApplicationController < ActionController::Base
         user_params.permit(:email, :current_password, :password, :password_confirmation)
       end
     end 
+
+ # layout :layout_by_resource
+#
+ # private
+#
+ # def layout_by_resource
+ #   if devise_controller? && resource_name == :user && action_name == "new"
+ #     "devise"
+ #   else
+ #     "application"
+ #   end
+ # end
+
 end
