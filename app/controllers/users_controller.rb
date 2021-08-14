@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     layout 'profile' 
 
     def show    
+      @user = User.friendly.find(params[:id])
     end 
     
     def update

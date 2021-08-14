@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :photos, param: :photo_name
+  
+
   devise_for :users, path: '',
   path_names: {
       sign_in: 'Login',

@@ -33,7 +33,7 @@
 				<% if user_signed_in? %>
 				<li><%= link_to 'See your Photos', user_path(current_user) %></li>
 				<li><a href="./gallery.html">Gallery</a></li>
-					<li><a href="./blog.html">Blog</a>
+				<li><a href="./blog.html">Blog</a>
 						<ul class="sub__menu">
 							<li><a href="./blog-single.html">Blog Single</a></li>
 						</ul>
@@ -43,6 +43,7 @@
 				<% else %>
 				<li><a> <%= link_to "Login", new_user_session_path %> </a></li>
 				<li><%= link_to "SignUp", new_user_registration_path %></li>
+				<li><a href="./contact.html">About</a></li>
 				<% end %>
 				<!--<li><a href="./index.html" class="menu--active">Home</a></li>-->
 				<!--	<li><a href="./about.html">About</a></li>-->
@@ -51,6 +52,8 @@
 		</div>
 	</header>
 	<!-- Header Section end -->
+
+	
 
 	<!-- Hero Section -->
 	<section class="hero__section">
