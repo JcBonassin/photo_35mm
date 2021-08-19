@@ -1,32 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Photos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Image data</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @photos.each do |photo| %>
-      <tr>
-        <td><%= photo.title %></td>
-        <td><%= photo.body %></td>
-        <td><%= photo.image_data %></td>
-        <td><%= image_tag photo.image_url %></td>
-        <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Photo', new_photo_path %>
+            <div id="preloder">
+              <div class="loader"></div>
+            </div>
+<% if @photos.length > 0 %>
+ 
+            <div class="gallery__page">
+              <div class="gallery__warp">   
+                <div class="row">
+                <% @photos.each do |photo|  %> 
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                    <%= link_to photo do %>
+                        <%= photo.title %>
+                        <%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
+                    <% end %>
+                    <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure yeah!!?' } %>
+                  </div>
+                <% end %>
+                </div>  
+              </div>  
+            </div>
+  
+ <% else %>
+ <p>
+    You have no photos
+  </p>
+<% end %>

@@ -1,117 +1,20 @@
-<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
 
-	<!-- Header Section -->
-	<header class="header">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-4 col-md-3 order-2 order-sm-1">
-					<div class="header__social">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-instagram"></i></a>
-					</div>
-				</div>
-				<div class="col-sm-4 col-md-6 order-1  order-md-2 text-center">
-					<a href="./index.html" class="site-logo">
-						<img src="35mm/img/logo.png" alt="">
-					</a>
-				</div>
-				<div class="col-sm-4 col-md-3 order-3 order-sm-3">
-					<div class="header__switches">
-						<a href="#" class="search-switch"><i class="fa fa-search"></i></a>
-						<a href="#" class="nav-switch"><i class="fa fa-bars"></i></a>
-						<a href="#"><i class="fa fa-shopping-cart"></i></a>
-					</div>
-				</div>
-			</div>
-			<nav class="main__menu">
-				<ul class="nav__menu">
-                <% if user_signed_in? %>
-                <li><%= link_to 'Home', root_path(current_user) %></li>
-				<li><%= link_to 'Upload a Photo', new_user_photo_path(current_user) %></li>
-					<li><a href="./gallery.html" class="menu--active">Gallery</a></li>
-					<li><a href="./blog.html">Blog</a>
-						<ul class="sub__menu">
-							<li><a href="./blog-single.html">Blog Single</a></li>
-						</ul>
-					</li>
-					<li><a href="./contact.html">Contact</a></li>
-                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-                    <% end %>
-				</ul>
-			</nav>
-		</div>
-	</header>
-	<!-- Header Section end -->
-
-	<!-- About Page -->
 	<div class="gallery__page">
-		<div class="gallery__warp">
+		<div class="gallery__warp">		
 			<div class="row">
+			<% current_user.photos.each do |photo|  %> 
 				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/1.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/1.jpg" alt="">
-					</a>
+					<%= link_to photo do %>
+   					<%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
+					<% end %>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/2.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/2.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/3.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/3.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/4.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/4.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/5.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/5.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/6.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/6.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/7.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/7.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/8.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/8.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/9.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/9.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/10.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/10.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/11.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/11.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/12.jpg" data-fresco-group="gallery">
-						<img src="35mm/img/gallery/12.jpg" alt="">
-					</a>
-				</div>
-			</div>
-		</div>
+			<% end %>
+			</div>	
+		</div>	
 	</div>
-	<!-- About Page end -->
+
+	
+

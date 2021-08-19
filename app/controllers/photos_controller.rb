@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  
+  layout 'profile' 
 
   # GET /photos or /photos.json
   def index
@@ -25,7 +27,7 @@ class PhotosController < ApplicationController
     @user = current_user
     @photo = @user.photos.new(photo_params)
     if @photo.save
-      redirect_to photo_path(@photo)
+      redirect_to user_path(@user)
     else
       render :new
     end
