@@ -14,8 +14,9 @@
                     <%= link_to photo do %>
                         <%= photo.title %>
                         <%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
+                        <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure yeah!!?' } %>
                     <% end %>
-                    <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure yeah!!?' } %>
+                    
                   </div>
                 <% end %>
                 </div>  

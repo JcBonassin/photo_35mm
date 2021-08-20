@@ -1,7 +1,5 @@
 class PhotosController < ApplicationController
   
-  layout 'profile' 
-
   # GET /photos or /photos.json
   def index
     @photos = Photo.all
