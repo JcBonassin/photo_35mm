@@ -9,11 +9,13 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :users, :only => [:show, :update] do
+  resources :users, :only => [:show, :update, :new] do
     get 'upload' => 'users#upload_avatar'
-    resources :photos, :except => [:edit, :update]
+    resources :photos, :except => [:edit, :update, :new]
   end
 
-  resources :photos, :except => [:new, :create]
+  resources :photos, :except => [:create]
+  delete 'photos/:id/delete' => 'photos#destroy', as: 'photos_delete'
+  get '/photos/:id/delete' => 'photos#destroy'
   
 end

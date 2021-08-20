@@ -1,6 +1,11 @@
+	<p id="notice"><%= notice %></p>
+	
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
+
+
+	<% if @photos.length > 0 %>
 
 	<div class="gallery__page">
 		<div class="gallery__warp">		
@@ -15,6 +20,33 @@
 			</div>	
 		</div>	
 	</div>
+
+	<% else %>
+ <div class= "center-this">
+ <p>
+    <strong><h2>You have no photos</h2></strong>
+  </p>
+<% end %>
+</div>
+
+<style>
+     .center-this {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 50vh;
+     }
+
+	 .center-this1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+     }
+</style>
 
 	
 

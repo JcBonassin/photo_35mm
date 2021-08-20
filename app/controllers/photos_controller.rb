@@ -3,11 +3,13 @@ class PhotosController < ApplicationController
   # GET /photos or /photos.json
   def index
     @photos = Photo.all
+    @users = User.all
   end
 
   # GET /photos/1 or /photos/1.json
   def show
     @photo = Photo.find(params[:id])
+    @user = current_user
   end
 
   # GET /photos/new
@@ -27,7 +29,9 @@ class PhotosController < ApplicationController
     if @photo.save
       redirect_to user_path(@user)
     else
-      render :new
+      flash[:notice] = "Please complete all fields"
+      redirect_to new_photo_path
+      #render :new
     end
   end
 
@@ -45,6 +49,8 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
+    params[:id] = nil
+    flash[:notice] = "Photo has been deleted"
     redirect_to photos_path
   end
 
