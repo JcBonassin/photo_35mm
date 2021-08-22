@@ -1,81 +1,34 @@
 
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
+<!-- Page Preloder -->
+<div id="preloder">
+	<div class="loader"></div>
+</div>
 
+<% if user_signed_in? %>
+<div class= "center-this">
+  <strong><h2>Community best photos</h2></strong>
+</div>
+<% end %>
 	
-	<!-- Hero Section -->
-	<section class="hero__section">
-		<div class="hero-slider">
-			<div class="slide-item">
-				<a class="fresco" href="img/hero-slider/1.jpg" data-fresco-group="projects">
-					<img src="35mm/img/hero-slider/1.jpg" alt="">
-				</a>
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/hero-slider/2.jpg" data-fresco-group="projects">
-					<img src="35mm/img/hero-slider/2.jpg" alt="">
-					</a>
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/hero-slider/3.jpg" data-fresco-group="projects">
-					<img src="35mm/img/hero-slider/3.jpg" alt="">
-				</a>	
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/hero-slider/4.jpg" data-fresco-group="projects">
-					<img src="35mm/img/hero-slider/4.jpg" alt="">
-				</a>	
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/hero-slider/5.jpg" data-fresco-group="projects">
-					<img src="35mm/img/hero-slider/5.jpg" alt="">
-				</a>	
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/hero-slider/6.jpg" data-fresco-group="projects">
-					<img src="35mm/img/hero-slider/6.jpg" alt="">
-				</a>	
-			</div>
-			<div class="slide-item">
-				<a class="fresco" href="img/hero-slider/7.jpg" data-fresco-group="projects">
-					<img src="35mm/img/hero-slider/7.jpg" alt="">
-				</a>	
-			</div>
-		</div>
-		<div class="hero-text-slider">
-			<div class="text-item">
-				<h2>Nature</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Red Heartbeat</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Blue Dreem</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Christian Church</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Red Darkness</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Beauty with Brain</h2>
-				<p>Photography</p>
-			</div>
-			<div class="text-item">
-				<h2>Remarkable</h2>
-				<p>Photography</p>
-			</div>
-		</div>
-	</section>
-	<!-- Hero Section end -->
+	
+<!-- About Page -->
+<div class="container">
+
+<!-- Photo Grid -->
+<div class="row"> 
+    <div class="column">
+	<% @photos.each do |photo|  %> 
+      <%= link_to photo do %>
+         <%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
+         <small> By <%= photo.user.slug %> </small>
+      <% end %>     
+	  <% end %>
+    </div>
+  </div>
+</div>
+
+
+	<!-- About Page end -->
 
 	<!-- Search Begin -->
 	<div class="search-model">
@@ -87,5 +40,42 @@
 		</div>
 	</div>
 	<!-- Search End -->
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .header {
+    text-align: center;
+    padding: 32px;
+  }
+
+  .row {
+    display: -ms-flexbox; /* IE 10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE 10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+
+  /* Create two equal columns that sits next to each other */
+  .column {
+    -ms-flex: 50%; /* IE 10 */
+    flex: 50%;
+    padding: 0 4px;
+  }
+
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+  }
+  
+</style>
 
 	

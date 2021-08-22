@@ -32,14 +32,36 @@
 					<li><a href="./contact.html">Contact</a></li>
 				<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 				<% else %>
-				<li><a> <%= link_to "Login", new_user_session_path %> </a></li>
+				<div class= "center-this1">
+				  <p>
+    			  <strong><h2>Welcome to 35mm</h2></strong>
+  				  </p>
+				</div>
+				<li><%= link_to "Login", new_user_session_path %></li>
 				<li><%= link_to "SignUp", new_user_registration_path %></li>
 				<li><a href="./contact.html">About</a></li>
 				<% end %>
-				<!--<li><a href="./index.html" class="menu--active">Home</a></li>-->
-				<!--	<li><a href="./about.html">About</a></li>-->
 				</ul>
 			</nav>
 		</div>
 	</header>
 	<!-- Header Section end -->
+
+	<style>
+     .center-this1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+     }
+
+	  .center-this {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 30vh;
+     }
+</style>
