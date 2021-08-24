@@ -59,9 +59,8 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'friendly_id', '~> 5.4.0'
-gem 'omniauth'
-gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem "omniauth"
 gem 'omniauth-facebook'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
