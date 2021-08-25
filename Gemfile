@@ -61,6 +61,7 @@ gem 'mini_magick'
 gem 'friendly_id', '~> 5.4.0'
 gem 'omniauth', '~> 1.9', '>= 1.9.1'
 gem 'omniauth-facebook'
+gem 'dotenv-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
