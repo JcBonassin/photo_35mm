@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   extend FriendlyId
-  friendly_id :first_name, use: :slugged
+  friendly_id :name, use: :slugged
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers  => [:facebook]
   has_one_attached :avatar 
   has_many :photos
+
 
   validates_presence_of :first_name, uniqueness: true
     validates :first_name, presence: :true, uniqueness: { case_sensitive: false }
@@ -23,15 +24,22 @@ class User < ApplicationRecord
       end
     end
 
+ # def self.from_omniauth(auth)
+ #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+ #     user.email = auth.info.email
+ #     user.password = Devise.friendly_token[0,20]
+ #     user.first_name = auth.info.first_name   # assuming the user model has a name
+ #     user.last_name = auth.info.last_name   # assuming the user model has a name
+ #     #user.provider = auth.provider
+ #     #user.uid = auth.uid
+ #     #user.github_profile = auth.info.urls.GitHub
+ #   end
+ # end
+
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.first_name = auth.info.first_name   # assuming the user model has a name
-      user.last_name = auth.info.last_name   # assuming the user model has a name
-      #user.provider = auth.provider
-      #user.uid = auth.uid
-      #user.github_profile = auth.info.urls.GitHub
-    end
-end
+    name_split = auth.info.name.split(" ")
+    user = User.where(email: auth.info.email).first
+    user ||= User.create!(provider: auth.provider, uid: auth.uid, last_name: name_split[0], first_name: name_split[1], email: auth.info.email, name: name_split[1], slug: name_split[1], image: auth.info.image, password: Devise.friendly_token[0, 20])
+      user
+  end
 end

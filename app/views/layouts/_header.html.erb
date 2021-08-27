@@ -13,6 +13,7 @@
 					<a href="./index.html" class="site-logo">
 						<img src="35mm/img/logo.png" alt="">
 					</a>
+					
 				</div>
 				<div class="col-sm-4 col-md-3 order-3 order-sm-3">
 					<div class="header__switches">
@@ -31,6 +32,7 @@
                 <li><%= link_to 'Upload a Photo', new_photo_path %></li>
 					<li><a href="./contact.html">Contact</a></li>
 				<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+				
 				<% else %>
 				<div class= "center-this1">
 				  <p>

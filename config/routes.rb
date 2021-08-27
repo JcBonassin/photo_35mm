@@ -7,9 +7,6 @@ Rails.application.routes.draw do
       sign_up: 'register'
   } 
 
-  
-
-
   root to: "home#index"
 
   resources :users, :only => [:show, :update, :new] do
