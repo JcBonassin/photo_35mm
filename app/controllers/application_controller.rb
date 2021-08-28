@@ -6,17 +6,23 @@ class ApplicationController < ActionController::Base
 
 
     protected
+
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-        user_params.permit(:first_name, :last_name, :email, :password, :password_confirmation)
-      end
-      devise_parameter_sanitizer.permit(:sign_in) do |user_params|
-        user_params.permit(:email, :password)
-      end
-      devise_parameter_sanitizer.permit(:account_update) do |user_params|
-        user_params.permit(:email, :current_password, :password, :password_confirmation)
-      end
-    end 
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar])
+    end
+    #def configure_permitted_parameters
+    #  
+    #  devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+    #    user_params.permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    #  end
+    #  devise_parameter_sanitizer.permit(:sign_in) do |user_params|
+    #    user_params.permit(:email, :password)
+    #  end
+    #  devise_parameter_sanitizer.permit(:account_update) do |user_params|
+    #    user_params.permit(:email, :current_password, :password, :password_confirmation)
+    #  end
+    #end 
 
  # layout :layout_by_resource
 #

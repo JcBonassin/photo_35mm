@@ -8,6 +8,9 @@
 						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-instagram"></i></a>
 					</div>
+					<% if user_signed_in? %>
+				Hey <%= current_user.first_name %>
+				<% end %>
 				</div>
 				<div class="col-sm-4 col-md-6 order-1  order-md-2 text-center">
 					<a href="./index.html" class="site-logo">
@@ -30,7 +33,7 @@
 				<li><%= link_to 'See your Photos', user_path(current_user) %></li>
 				<li><%= link_to 'All Photos Gallery', photos_path %></li>
                 <li><%= link_to 'Upload a Photo', new_photo_path %></li>
-					<li><a href="./contact.html">Contact</a></li>
+				<li><%= link_to "Account", edit_user_registration_path%></li>
 				<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 				
 				<% else %>

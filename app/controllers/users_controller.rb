@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def upload_avatar
+    @user = current_user
+  end
+
     def show    
       @user = User.friendly.find(params[:id])
       @photos = Photo.all
@@ -14,5 +18,4 @@ class UsersController < ApplicationController
           render :upload_avatar
         end
       end
-    
 end

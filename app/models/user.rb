@@ -9,10 +9,12 @@ class User < ApplicationRecord
   has_one_attached :avatar 
   has_many :photos
 
+  
+
 
   validates_presence_of :first_name, uniqueness: true
-    validates :first_name, presence: :true, uniqueness: { case_sensitive: false }
-    validates :last_name, presence: :true, uniqueness: { case_sensitive: false }
+    #validates :first_name, presence: :true, uniqueness: { case_sensitive: false }
+    #validates :last_name, presence: :true, uniqueness: { case_sensitive: false }
     validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
     validates :email, uniqueness: true
 
@@ -39,7 +41,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     name_split = auth.info.name.split(" ")
     user = User.where(email: auth.info.email).first
-    user ||= User.create!(provider: auth.provider, uid: auth.uid, last_name: name_split[0], first_name: name_split[1], email: auth.info.email, name: name_split[1], slug: name_split[1], image: auth.info.image, password: Devise.friendly_token[0, 20])
+    user ||= User.create!(provider: auth.provider, uid: auth.uid, first_name: name_split[0], last_name: name_split[1], email: auth.info.email, name: name_split[0], slug: name_split[0], image: auth.info.image, password: Devise.friendly_token[0, 20])
       user
   end
 end
