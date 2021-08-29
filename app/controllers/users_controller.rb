@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         @user = current_user
         @user.update(avatar_params)
         if @user.save
-          redirect_to user_path
+          redirect_to edit_user_registration_path
         else
           render :upload_avatar
         end

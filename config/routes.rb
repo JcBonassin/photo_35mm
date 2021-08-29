@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :users, :only => [:show, :update, :new, :edit] do
+  resources :users, :only => [:show, :update, :new] do
     get 'upload' => 'users#upload_avatar'
     resources :photos, :except => [:edit, :update, :new]
   end
