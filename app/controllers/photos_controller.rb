@@ -10,6 +10,8 @@ class PhotosController < ApplicationController
   def show
     @photo = Photo.find(params[:id])
     @user = current_user
+    @comment = Comment.new
+    
   end
 
   # GET /photos/new

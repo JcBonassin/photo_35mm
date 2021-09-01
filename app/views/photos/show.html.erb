@@ -2,14 +2,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @photo.body %>
-</p>
-
-<p>
   <strong>Title:</strong>
   <%= @photo.title %>
 </p>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @photo.body %>
+</p>
+
 
 <p>
 <small>By <%= User.find(@photo.user_id).slug %></small>
@@ -20,10 +22,18 @@
 </p>
 
 
-<%= link_to 'Back', photos_path %>
+<%= render 'comments/form' %>
 
+<% @photo.comments.each do |comment| %>
+  <p>
+    <%= comment.content %>
+    <%= User.find(comment.user_id).name %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', photos_path %>
 <% if current_user.id == @photo.user_id %>
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Delete Photo', photos_delete_path, method: :delete %>
+<%= link_to 'Delete Photo', photo_photos_delete_path(@photo), method: :delete %>
 <% end %>
 </div>

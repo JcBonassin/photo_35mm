@@ -4,9 +4,9 @@
 		<div class="loader"></div>
 	</div>
 
+ <% if current_user.photos.length > 0 %>
 
-	<% if @photos.length > 0 %>
-	
+	<% if is_current_user?(@user) %>
 
 	<div class="gallery__page">
 		<div class="gallery__warp">		
@@ -18,6 +18,28 @@
 					<% end %>
 				</div>
 			<% end %>
+	<% elsif %>
+
+	<% if @user.photos.length > 0 %>
+
+	  <% if is_current_user?(@user) %>
+		
+			<% @user.photos.each do |photo|  %> 
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<%= link_to photo do %>
+   							<%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
+							<% end %>
+						</div>
+					<% end %>
+			<% end %>
+		<% else %>	
+			<div class= "center-this">
+				<p>
+					<strong><h2>This user has no photos Yet</h2></strong>
+				</p>
+			</div>
+		<% end %>
+	<% end %>
 			</div>	
 		</div>	
 	</div>

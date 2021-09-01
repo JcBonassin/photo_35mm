@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers  => [:facebook]
   has_one_attached :avatar 
   has_many :photos
+  has_many :comments
 
   
 

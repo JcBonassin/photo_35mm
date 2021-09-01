@@ -1,25 +1,25 @@
 <%= form_for([@user, @photo], multipart: true) do |f| %>
 
-  <div class="field">
+  <div class="form-group">
   <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :body %>
     <%= f.text_area :body %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    Upload <%= f.submit %>
   </div>
 <% end %>

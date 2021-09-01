@@ -41,11 +41,23 @@
   	    <span class="navbar-toggler-icon"></span>
   	</button>
 	
+	
 	<div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       </ul>
 
+	  <% if user_signed_in? %>
+
+	  <form class="d-flex">
+      	<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      	<button class="btn btn-secondary" type="submit">Search</button>
+      </form>
+
+	  <% end %>
+
         <ul class="navbar-nav">
+		
+		
              <li class="nav-item"></li>
                 <% if user_signed_in? %>
 			 
@@ -67,6 +79,19 @@
 	</div>
   </div>
 </nav>
+
+
+<style>
+     .center-this {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+     }
+  
+    </style>
         
 </head>
 

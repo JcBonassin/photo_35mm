@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks" }, path: '',
   path_names: {
       sign_in: 'Login',
@@ -14,8 +15,11 @@ Rails.application.routes.draw do
     resources :photos, :except => [:edit, :update, :new]
   end
 
-  resources :photos, :except => [:create]
-  delete 'photos/:id/delete' => 'photos#destroy', as: 'photos_delete'
-  get '/photos/:id/delete' => 'photos#destroy'
+  resources :photos, :except => [:create] do
+    delete 'photos/:id/delete' => 'photos#destroy', as: 'photos_delete'
+    get '/photos/:id/delete' => 'photos#destroy'
+    resources :comments, :except => [:show]
+    
+  end
   
 end
