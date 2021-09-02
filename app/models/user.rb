@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :first_name, use: :slugged
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, :omniauth_providers  => [:facebook]
+         :trackable, :omniauthable, :omniauth_providers  => [:facebook]
   has_one_attached :avatar 
   has_many :photos
   has_many :comments
@@ -27,17 +27,6 @@ class User < ApplicationRecord
       end
     end
 
- # def self.from_omniauth(auth)
- #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
- #     user.email = auth.info.email
- #     user.password = Devise.friendly_token[0,20]
- #     user.first_name = auth.info.first_name   # assuming the user model has a name
- #     user.last_name = auth.info.last_name   # assuming the user model has a name
- #     #user.provider = auth.provider
- #     #user.uid = auth.uid
- #     #user.github_profile = auth.info.urls.GitHub
- #   end
- # end
 
   def self.from_omniauth(auth)
     name_split = auth.info.name.split(" ")

@@ -9,7 +9,6 @@
     <strong><h2>35mm Stream</h2></strong>
   	</p>
 	</div>
- 
             <div class="gallery__page">
               <div class="gallery__warp">   
                 <div class="row">
@@ -18,7 +17,7 @@
                     <%= link_to photo do %>
                         <%= photo.title %>
                         <%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
-                        <small> By <%= photo.user.slug %> </small>
+                        <small><%= link_to "By #{photo.user.slug}", photo.user %> </small>
                     <% end %>     
                   </div>
                 <% end %>

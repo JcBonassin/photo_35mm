@@ -5,9 +5,13 @@
 </div>
 
 <% if user_signed_in? %>
-<div class= "center-this">
-  <strong><h2>Community best photos</h2></strong>
-</div>
+  <div class= "center-this">
+  <% if current_user.sign_in_count > 0 %>
+    <h2>Welcome <%= current_user.first_name.capitalize %></h2>
+   <% current_user.update_attribute(:sign_in_count, 0)%>
+  <% end %>
+    <strong><h2>Community best photos</h2></strong>
+  </div>
 <% end %>
 	
 	
@@ -19,7 +23,7 @@
 	<% @photos.each do |photo|  %> 
       <%= link_to photo do %>
          <%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
-         <small> By <%= photo.user.slug %> </small>
+         <small><%= link_to "By #{photo.user.slug}", photo.user %></small>
       <% end %>     
 	  <% end %>
     </div>
