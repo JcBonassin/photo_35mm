@@ -18,8 +18,11 @@ Rails.application.routes.draw do
   resources :photos, :except => [:create] do
     delete 'photos/:id/delete' => 'photos#destroy', as: 'photos_delete'
     get '/photos/:id/delete' => 'photos#destroy'
-    resources :comments, :except => [:show]
-    
+    resources :comments, only: [:create, :destroy] #, :only => [:create, :destroy, :new]
+    delete ':comments/:id/delete' => 'comments#destroy'
+    get '/:comments/:id/delete' => 'comments#destroy'
   end
+
+  
   
 end

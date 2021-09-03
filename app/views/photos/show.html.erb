@@ -1,11 +1,23 @@
+
+
 <div class= "container">
 <p id="notice"><%= notice %></p>
+<p class="alert"></p>
+
+
+<p>
+  <%= image_tag @photo.image_url if @photo.image %>
+</p>
+
+
+<p>
+  <strong>By <%= link_to "#{@photo.user.slug.capitalize}", @photo.user %></strong>
+</p>
 
 <p>
   <strong>Title:</strong>
   <%= @photo.title %>
 </p>
-
 
 <p>
   <strong>Description:</strong>
@@ -13,23 +25,27 @@
 </p>
 
 
-<p>
-<small>By <%= User.find(@photo.user_id).slug %></small>
-</p>
+<hr>
 
-<p>
-  <%= image_tag @photo.image_url if @photo.image %>
-</p>
-
-
-<%= render 'comments/form' %>
 
 <% @photo.comments.each do |comment| %>
+ <strong><%= link_to comment.user.slug.capitalize, user_path(comment.user) %></strong>
   <p>
-    <%= comment.content %>
-    <%= User.find(comment.user_id).name %>
+  <%= comment.content.capitalize %>
   </p>
+    <% if current_user && current_user == comment.user %>
+<p>
+    <%= link_to "Delete", [comment.photo, comment], method: :delete, class: 'btn btn-danger btn-sm', remote: true  %>
+</p>
+  <% end %>  
 <% end %>
+
+
+<p>
+<%= render 'comments/form' %>
+</p>
+
+
 
 <%= link_to 'Back', photos_path %>
 <% if current_user.id == @photo.user_id %>

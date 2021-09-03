@@ -1,11 +1,6 @@
 class CommentsController < ApplicationController
-    def new
-        @user = User.find(current_user.id)
-        @photo = Photo.find(params[:id])
-        @comment = @photo.comments.new
-      end
-    
-      def create
+
+       def create
         @user = User.find(current_user.id)
         @photo = Photo.find(params[:photo_id])
         @comment = @photo.comments.new(comment_params)
@@ -18,8 +13,13 @@ class CommentsController < ApplicationController
       end
 
       def destroy
-        @comment = current_user.comments.find(params[:id])
+        @photo = Photo.find(params[:photo_id])
+        @comment = @photo.comments.find(params[:id])
+        @comment_id = @comment_id
+        #@comment = current_user.comments.find(params[:id])
         @comment.destroy
+        flash[:notice] = "Comment has been deleted"
+        redirect_to photo_path(@photo)  
       end
     
       private

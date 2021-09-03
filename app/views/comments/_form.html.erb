@@ -1,7 +1,16 @@
 <%= render 'layouts/errors', object: @comment %>
 <%= form_for [@photo, @comment] do |f| %>
+
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
-  <%= f.submit %>
+
+  <div class="mb-3">
+    <%= f.label :content, "Speak out your mind" %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.text_field :content, class: 'form-control'%>
+  </div>
+
+  <%= f.submit "Comment", class: 'btn btn-secondary' %>
+
 <% end %>
