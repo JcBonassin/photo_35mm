@@ -1,6 +1,6 @@
 class LabelsController < ApplicationController
     def show
-        @label = Label.find(params[:id])
+        @label = Label.friendly.find(params[:id])
         @matches = @label.find_by_label
       end
 

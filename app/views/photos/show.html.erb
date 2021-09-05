@@ -32,20 +32,20 @@
 <%= render 'comments/form' %>
 </p>
 
-<%= render 'labels/form' %>
-
-<p>
-<% @photo.labels.each do |label| %>
-  <%= link_to label.tag, label_path(label) %> | 
-<% end %>
-</p>
-
-
-    <%= link_to 'Back', photos_path %>
-    <% if current_user.id == @photo.user_id %> |
+    <p>
+    <% if current_user.id == @photo.user_id %> 
     <%= link_to 'Edit', edit_photo_path(@photo) %> |
-    <%= link_to 'Delete Photo', photo_photos_delete_path(@photo), method: :delete %>
+    <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
+    <%= render 'labels/form' %>
     <% end %>
+    </p>
+
+    <p>
+      <strong>Tags:</strong>
+      <% @photo.labels.each do |label| %>
+      <%= link_to label.tag, label_path(label) %> | 
+      <% end %>
+    </p>
     </div>
   </div>
 </div>

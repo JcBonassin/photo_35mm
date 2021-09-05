@@ -1,4 +1,6 @@
 class Label < ApplicationRecord
+    extend FriendlyId
+    friendly_id :tag, use: :slugged
     belongs_to :photo
     validates :tag, :presence => true, length: { maximum: 10}
 

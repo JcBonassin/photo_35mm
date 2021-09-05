@@ -8,7 +8,8 @@ class PhotosController < ApplicationController
 
   # GET /photos/1 or /photos/1.json
   def show
-    @photo = Photo.find(params[:id])
+    #@photo = Photo.find(params[:id])
+    @photo = Photo.friendly.find(params[:id])
     @user = current_user
     @comment = Comment.new
     @label = Label.new
@@ -50,11 +51,11 @@ class PhotosController < ApplicationController
 
   # DELETE /photos/1 or /photos/1.json
   def destroy
-    @photo = Photo.find(params[:id])
+    @photo = Photo.friendly.find(params[:id])
     @photo.destroy
     params[:id] = nil
     flash[:notice] = "Photo has been deleted"
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
 
   private
