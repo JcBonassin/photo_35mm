@@ -1,0 +1,13 @@
+<div class="gallery__page">
+			<div class="gallery__warp">		
+				<div class="row">
+				<% current_user.photos.each do |photo|  %> 
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<%= link_to photo do %>
+   						<%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
+						<% end %>	
+					</div>
+					<% end %>
+					</div>					
+			</div>	
+		</div>

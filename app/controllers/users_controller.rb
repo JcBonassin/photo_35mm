@@ -5,8 +5,9 @@ class UsersController < ApplicationController
   end
 
     def show    
-      @user = User.friendly.find(params[:id])
-      @photos = Photo.all
+     @user = User.friendly.find(params[:id])
+     @users = User.all
+     @photos = Photo.all
     end 
     
     def update

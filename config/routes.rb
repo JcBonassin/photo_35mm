@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  
   devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks" }, path: '',
   path_names: {
       sign_in: 'Login',
@@ -21,8 +22,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy] #, :only => [:create, :destroy, :new]
     delete ':comments/:id/delete' => 'comments#destroy'
     get '/:comments/:id/delete' => 'comments#destroy'
+    resources :labels,  only: [:new, :create, :destroy,]
   end
 
-  
+     resources :labels,  only: [:index, :show]
   
 end

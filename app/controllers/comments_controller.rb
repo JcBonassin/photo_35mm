@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
       def destroy
         @photo = Photo.find(params[:photo_id])
         @comment = @photo.comments.find(params[:id])
-        @comment_id = @comment_id
+        @comment_id = params[:id]
         #@comment = current_user.comments.find(params[:id])
         @comment.destroy
         flash[:notice] = "Comment has been deleted"

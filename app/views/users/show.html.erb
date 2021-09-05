@@ -1,61 +1,27 @@
-<p id="notice"><%= notice %></p>
-	
 <div id="preloder">
 	<div class="loader"></div>
 </div>
 
-
-<% if current_user.photos.length > 0 %>
+<% if current_user.photos.length != 0 %>
 
 	<% if is_current_user?(@user) %>
 
-		<div class="gallery__page">
-			<div class="gallery__warp">		
-				<div class="row">
-				<% current_user.photos.each do |photo|  %> 
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<%= link_to photo do %>
-   						<%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
-						   		<% end %>
-				
-					</div>
-					<% end %>
-				
-					</div>	
-					
-			</div>	
-		</div>
+		<%= render 'users/user' %>
 				
 	<% elsif %>
 
 	<% if @user.photos.length > 0 %>
 
-	<div class="gallery__page">
-			<div class="gallery__warp">		
-				<div class="row">
+	<%= render 'users/users_profile' %>
 
-		<% if @user.photos %>
-			<% @user.photos.each do |photo|  %> 
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<%= link_to photo do %>
-   					<%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
-					<% end %>
+		<% else %>	
+				<div class= "center-this">
+					<p>
+						<strong><h2><%= @user.slug %> has no photos yet</h2></strong>
+					</p>
 				</div>
-			<% end %>
+		<% end %>
 	<% end %>
-
-	</div>					
- </div>	
-</div>
-
-	<% else %>	
-			<div class= "center-this">
-				<p>
-					<strong><h2><%= @user.slug %> has no photos yet</h2></strong>
-				</p>
-			</div>
-	<% end %>
-<% end %>
 				
 
 <% else %>
@@ -63,6 +29,7 @@
 		 	<p>
 		 	   <strong><h2>You have no photos yet</h2></strong>
 		 	 </p>
+			  <strong><h3>Upload your first photo :)</h3></strong>
 		<% end %>
 	</div>
 

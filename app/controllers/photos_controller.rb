@@ -11,6 +11,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @user = current_user
     @comment = Comment.new
+    @label = Label.new
     
   end
 
@@ -53,7 +54,7 @@ class PhotosController < ApplicationController
     @photo.destroy
     params[:id] = nil
     flash[:notice] = "Photo has been deleted"
-    redirect_to photos_path
+    redirect_to root_path
   end
 
   private

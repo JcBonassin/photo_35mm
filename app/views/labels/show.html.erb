@@ -1,0 +1,6 @@
+<h1>Photos that contain <%= @label.tag %></h1>
+<ul>
+  <% @matches.each do |photo| %>
+    <li><%= image_tag photo.image_url %></li>
+  <% end %>
+</ul>
