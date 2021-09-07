@@ -1,7 +1,8 @@
 
 <%= form_for [@photo, @label] do |f| %>
   <%= f.hidden_field :user_id, :value => @photo.id %>
-  <%= f.label :tag %>
-  <%= f.text_field :tag %>
+  <%= f.label :tag_list %>
+  <%= f.text_field :tag_list %>
   <%= f.submit  "Add" %>
 <% end %>
+

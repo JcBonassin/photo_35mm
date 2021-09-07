@@ -9,11 +9,12 @@ class User < ApplicationRecord
   has_one_attached :avatar 
   has_many :photos
   has_many :comments
+  has_many :labels, through: :photos
 
   
 
 
-  validates_presence_of :first_name, uniqueness: true
+    validates_presence_of :first_name, uniqueness: true
     #validates :first_name, presence: :true, uniqueness: { case_sensitive: false }
     #validates :last_name, presence: :true, uniqueness: { case_sensitive: false }
     validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }

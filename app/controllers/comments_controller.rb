@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
 
        def create
         @user = User.find(current_user.id)
-        @photo = Photo.find(params[:photo_id])
+        #@photo = Photo.find(params[:photo_id])
+        @photo = Photo.friendly.find(params[:photo_id])
         @comment = @photo.comments.new(comment_params)
         if @comment.save
           redirect_to photo_path(@photo)
@@ -13,7 +14,7 @@ class CommentsController < ApplicationController
       end
 
       def destroy
-        @photo = Photo.find(params[:photo_id])
+        @photo = Photo.friendly.find(params[:photo_id])
         @comment = @photo.comments.find(params[:id])
         @comment_id = params[:id]
         #@comment = current_user.comments.find(params[:id])

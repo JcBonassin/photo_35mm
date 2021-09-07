@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_05_225207) do
+ActiveRecord::Schema.define(version: 2021_09_06_185751) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -59,12 +59,22 @@ ActiveRecord::Schema.define(version: 2021_09_05_225207) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "labellings", force: :cascade do |t|
+    t.integer "label_id", null: false
+    t.integer "photo_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["label_id"], name: "index_labellings_on_label_id"
+    t.index ["photo_id"], name: "index_labellings_on_photo_id"
+  end
+
   create_table "labels", force: :cascade do |t|
     t.string "tag"
     t.integer "photo_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.integer "user_id"
     t.index ["slug"], name: "index_labels_on_slug", unique: true
   end
 
@@ -77,6 +87,24 @@ ActiveRecord::Schema.define(version: 2021_09_05_225207) do
     t.integer "user_id"
     t.string "slug"
     t.index ["slug"], name: "index_photos_on_slug", unique: true
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -107,4 +135,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_225207) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "labellings", "labels"
+  add_foreign_key "labellings", "photos"
+  add_foreign_key "taggings", "tags"
 end

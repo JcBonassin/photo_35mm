@@ -1,2 +1,2 @@
-module LabelsHelper
+module LabelsHelper 
 end

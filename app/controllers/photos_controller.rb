@@ -2,6 +2,7 @@ class PhotosController < ApplicationController
   
   # GET /photos or /photos.json
   def index
+    #params[:label] ? @photos = Label.labelled_with(params[:label]) : @photos = Photo.all
     @photos = Photo.all
     @users = User.all
   end
@@ -66,7 +67,7 @@ class PhotosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def photo_params
-      params.require(:photo).permit(:title, :body, :image, :user_id)
+      params.require(:photo).permit(:title, :body, :image, :user_id, :tag_list)
     end
 
 

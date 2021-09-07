@@ -42,9 +42,9 @@
 
     <p>
       <strong>Tags:</strong>
-      <% @photo.labels.each do |label| %>
-      <%= link_to label.tag, label_path(label) %> | 
-      <% end %>
+      <%=  @photo.tag_list%>
+
+      
     </p>
     </div>
   </div>
