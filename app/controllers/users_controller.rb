@@ -19,4 +19,8 @@ class UsersController < ApplicationController
           render :upload_avatar
         end
       end
+
+      def user_params
+        params.require(:user).permit(:tag_list)
+      end
 end

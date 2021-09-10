@@ -19,15 +19,15 @@
   </div>
 
   <div class="form-group">
-    <div class="d-flex justify-content-sm-around">
-      <%= f.label :tag_list,"Tags"%>
-      <%= f.text_field :tag_list, placeholder: "Tags separated with comma" %>
-    </div>
+    <% f.label :image %>
+    <%= f.file_field :image %>
   </div>
 
   <div class="form-group">
-    <% f.label :image %>
-    <%= f.file_field :image %>
+    <div class="d-flex justify-content-sm-around">
+      <%= f.label :tag_list, "Add Tags"%>
+      <%= f.text_field :tag_list, placeholder: "Separated with comma" %>
+    </div>
   </div>
 
   <div class="form-group">

@@ -15,7 +15,8 @@
 				<li><%= link_to 'Home', root_path(current_user) %></li>
 				<li><%= link_to 'See your Photos', user_path(current_user) %></li>
 				<li><%= link_to 'All Photos Gallery', photos_path %></li>
-                <li><%= link_to 'Upload a Photo', new_photo_path %></li>	
+                <li><%= link_to 'Upload a Photo', new_photo_path %></li>
+				<li><%= link_to 'Explore', labels_path %></li>	
 				<% else %>
 				<div class= "center-this1">
 				  <p>

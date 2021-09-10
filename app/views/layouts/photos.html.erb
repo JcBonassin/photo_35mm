@@ -11,7 +11,7 @@
 
   	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-mutate-approach="sync"></script>
     <!-- Stylesheets -->
 	<link rel="stylesheet" href="35mm/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="35mm/css/font-awesome.min.css"/>
@@ -31,9 +31,9 @@
   <div class="container-fluid">
 
   	<div class="header__social">
-  		<a href="#"><i class="fa fa-facebook"></i></a>
-  		<a href="#"><i class="fa fa-twitter"></i></a>
-  		<a href="#"><i class="fa fa-instagram"></i></a>
+  		<a href="#"><i class="fab fa-facebook"></i></a>
+  		<a href="#"><i class="fab fa-twitter"></i></a>
+  		<a href="#"><i class="fab fa-instagram"></i></a>
   	</div>
 
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,7 +96,7 @@
 				<li><%= link_to 'See your Photos', user_path(current_user) %></li>
 				<li><%= link_to 'Upload a Photo', new_photo_path %></li>
 				<li><%= link_to 'All Photos Gallery', photos_path %></li>
-				<li><a href="./contact.html">Contact</a></li>
+				<li><%= link_to 'Explore with Tags', labels_path %></li>
                 <% end %>
 				</ul>
 			</nav>

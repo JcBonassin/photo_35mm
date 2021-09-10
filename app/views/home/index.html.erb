@@ -23,12 +23,13 @@
 	<% @photos.each do |photo|  %> 
       <%= link_to photo do %>
          <%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
-         <small><%= link_to "By #{photo.user.slug}", photo.user %></small>
+         <small><%= link_to "By #{photo.user.slug.capitalize}", photo.user %></small>
       <% end %>     
 	  <% end %>
     </div>
   </div>
 </div>
+
 
 
 	<!-- About Page end -->

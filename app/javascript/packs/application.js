@@ -5,12 +5,21 @@
 
 
 import Rails from "@rails/ujs"
-//import Turbolinks from "turbolinks"
+import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-//= require bootstrap
+import {} from 'jquery-ujs'
+import "font-awesome-sprockets";
+import "font-awesome";
 
+//= require bootstrap
+//= require jquery.turbolinks
+//= require rails-ujs 
+//= require jquery 
+//= require activestorage 
+//= require turbolinks
+//= require_tree 
 
 Rails.start()
-//=Turbolinks.start()
+Turbolinks.start()
 ActiveStorage.start()

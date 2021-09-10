@@ -9,5 +9,5 @@ class Photo < ApplicationRecord
     include ImageUploader::Attachment(:image)
     validates :body, :title, :image, presence: true
     acts_as_taggable_on :tags
-
+    acts_as_votable
 end

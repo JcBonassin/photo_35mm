@@ -1,0 +1,51 @@
+<div id="preloder">
+	<div class="loader"></div>
+</div>
+
+<div class= "center-this1">	
+<p>
+ <strong><h3>Tags <span>&#8594;</span></h3></strong> 
+ </p>	
+
+<div id="tag_cloud">
+<% tag_cloud Photo.tag_counts, %w[css1 css2 css3 css4]  do |tag, css_class| %>
+  <%= link_to tag.name, label_path(tag.name), :class => css_class %>
+<% end %>
+</div>
+</div>
+
+<div class="gallery__page">
+  <div class="gallery__warp">   
+    <div class="row">
+      <% @photos.each do |photo| %>
+       <%= link_to photo do %>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+          <%= image_tag photo.image_url %>
+          <% end %>
+          </div>
+          <% end %>
+    </div>
+    </div>
+    </div>
+
+   
+<style>
+.center-this1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 25vh;
+     }
+
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }
+
+</style>
+
+
+
+

@@ -1,4 +1,4 @@
-#class Labelling < ApplicationRecord
-#  belongs_to :label
-#  belongs_to :photo
-#end
+class Labelling < ApplicationRecord
+  belongs_to :label
+  belongs_to :photo
+end

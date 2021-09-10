@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :omniauthable, :omniauth_providers  => [:facebook]
   has_one_attached :avatar 
-  has_many :photos
+  has_many :photos, dependent: :destroy
   has_many :comments
   has_many :labels, through: :photos
 
@@ -19,6 +19,7 @@ class User < ApplicationRecord
     #validates :last_name, presence: :true, uniqueness: { case_sensitive: false }
     validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
     validates :email, uniqueness: true
+    acts_as_taggable_on :tags
 
     def self.new_with_session(params, session)
       super.tap do |user|

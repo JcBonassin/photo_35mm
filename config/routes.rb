@@ -20,9 +20,13 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy] #, :only => [:create, :destroy, :new]
     delete ':comments/:id/delete' => 'comments#destroy'
     get '/:comments/:id/delete' => 'comments#destroy'
-    resources :labels,  only: [:new, :create, :destroy,]
+    resources :labels,  only: [:new, :create, :destroy]
   end
 
      resources :labels,  only: [:index, :show]
+
+      get 'labels/added_tags/:id', :to => 'labels#added_tags', as: 'added_tags'
+
+  
   
 end

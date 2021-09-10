@@ -2,7 +2,6 @@ class PhotosController < ApplicationController
   
   # GET /photos or /photos.json
   def index
-    #params[:label] ? @photos = Label.labelled_with(params[:label]) : @photos = Photo.all
     @photos = Photo.all
     @users = User.all
   end
@@ -10,6 +9,10 @@ class PhotosController < ApplicationController
   # GET /photos/1 or /photos/1.json
   def show
     #@photo = Photo.find(params[:id])
+    if params[:liked_photo]
+      @photo = Photo.find_by_id(params[:liked_photo])
+      @photo.liked_by current_user
+    end
     @photo = Photo.friendly.find(params[:id])
     @user = current_user
     @comment = Comment.new
@@ -32,7 +35,7 @@ class PhotosController < ApplicationController
     @user = current_user
     @photo = @user.photos.new(photo_params)
     if @photo.save
-      redirect_to user_path(@user)
+      redirect_to photo_path(@photo)
     else
       flash[:notice] = "Please complete all fields"
       redirect_to new_photo_path
@@ -42,11 +45,11 @@ class PhotosController < ApplicationController
 
   # PATCH/PUT /photos/1 or /photos/1.json
   def update
-    @photo = Photo.find(params[:id])
+      @photo = Photo.friendly.find(params[:id])
     if @photo.update(photo_params)
       redirect_to photo_path(@photo)
     else
-      render :edit
+      render photo_path(@photo)
     end
   end
 
@@ -67,8 +70,6 @@ class PhotosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def photo_params
-      params.require(:photo).permit(:title, :body, :image, :user_id, :tag_list)
+      params.require(:photo).permit(:title, :body, :image, :user_id, :tag_list, :tag, :label_list)
     end
-
-
 end
