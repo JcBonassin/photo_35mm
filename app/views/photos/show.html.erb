@@ -32,18 +32,21 @@
 <%= render 'comments/form' %>
 </p>
 
-<small>Likes: <%= @photo.votes_for.size %> </small>
-<p><%= link_to "Like", :liked_photo => @photo.id%> <a href="#" class="btn btn-default" role="button">share</a></p>
+<p>
+  <%= link_to ('<i class="far fa-thumbs-up" aria-hidden="true" ></i>').html_safe, upvote_photo_path(@photo), method: :put  %> 
+  <%= @photo.get_upvotes.size %>
+  <%= link_to  ('<i class="far fa-thumbs-down" aria-hidden="true" ></i>').html_safe, downvote_photo_path(@photo), method: :put %> 
+  <%= @photo.get_downvotes.size %>
+ </p>
 
     <p>
     <% if current_user.id == @photo.user_id %>
     <%= link_to 'Edit', edit_photo_path(@photo) %> |
     <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
-   <!-- <%= render 'labels/form' %>-->
+    <%= render 'photos/form_b' %>
     <% end %>
     </p>
 
-   
     <p> 
     <strong>Tags:</strong>
       <%= raw @photo.tag_list.map { |t| link_to t, label_path(t)}.join('| ')%>|
@@ -51,6 +54,7 @@
     <%= link_to label.tag, added_tags_path(label) %>|
     <% end %>
     </p>
+    
     </div>
   </div>
 </div>

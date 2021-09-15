@@ -11,15 +11,13 @@ class User < ApplicationRecord
   has_many :comments
   has_many :labels, through: :photos
 
-  
-
-
     validates_presence_of :first_name, uniqueness: true
     #validates :first_name, presence: :true, uniqueness: { case_sensitive: false }
     #validates :last_name, presence: :true, uniqueness: { case_sensitive: false }
     validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
     validates :email, uniqueness: true
     acts_as_taggable_on :tags
+    acts_as_voter
 
     def self.new_with_session(params, session)
       super.tap do |user|

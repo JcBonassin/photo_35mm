@@ -4,22 +4,17 @@
 // that code so it'll be compiled.
 
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
-import {} from 'jquery-ujs'
-import "font-awesome-sprockets";
-import "font-awesome";
+//require("turbolinks").start()
+require("@rails/activestorage").start()
+require("channels")
+require("bootstrap")
+require("@rails/ujs").start()
+require("@rails/activestorage").start()
+require("channels")
+require("jquery")
 
-//= require bootstrap
-//= require jquery.turbolinks
-//= require rails-ujs 
-//= require jquery 
-//= require activestorage 
-//= require turbolinks
-//= require_tree 
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+// stylesheets
+require("../stylesheets/application.scss")

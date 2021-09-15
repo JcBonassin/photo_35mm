@@ -21,12 +21,17 @@ Rails.application.routes.draw do
     delete ':comments/:id/delete' => 'comments#destroy'
     get '/:comments/:id/delete' => 'comments#destroy'
     resources :labels,  only: [:new, :create, :destroy]
+    
+    member do
+      put "upvote", to: "photos#upvote"
+      put 'downvote', to: 'photos#downvote'
+  end
   end
 
      resources :labels,  only: [:index, :show]
 
       get 'labels/added_tags/:id', :to => 'labels#added_tags', as: 'added_tags'
 
-  
+      get 'search' => 'photos#search' 
   
 end

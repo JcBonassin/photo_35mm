@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
-  
+
+  #before_action :upvote, :downvote
+
   # GET /photos or /photos.json
   def index
     @photos = Photo.all
@@ -9,10 +11,10 @@ class PhotosController < ApplicationController
   # GET /photos/1 or /photos/1.json
   def show
     #@photo = Photo.find(params[:id])
-    if params[:liked_photo]
-      @photo = Photo.find_by_id(params[:liked_photo])
-      @photo.liked_by current_user
-    end
+    #if params[:liked_photo]
+    #  @photo = Photo.find_by_id(params[:liked_photo])
+    #  @photo.liked_by current_user
+    #end
     @photo = Photo.friendly.find(params[:id])
     @user = current_user
     @comment = Comment.new
@@ -61,6 +63,23 @@ class PhotosController < ApplicationController
     flash[:notice] = "Photo has been deleted"
     redirect_to user_path(current_user)
   end
+
+  def upvote
+    @photo = Photo.friendly.find(params[:id])
+    @photo.upvote_by current_user 
+    redirect_to photo_path(@photo)  
+  end
+  
+  def downvote   
+      @photo = Photo.friendly.find(params[:id])
+      @photo.downvote_by current_user
+      redirect_to photo_path(@photo) 
+  end
+
+  def search
+    @photos = Photo.search(params[:q])
+  end 
+ 
 
   private
     # Use callbacks to share common setup or constraints between actions.

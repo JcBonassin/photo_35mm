@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="photo, html">
 
-  	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  	<%= stylesheet_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
 <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-mutate-approach="sync"></script>
     <!-- Stylesheets -->
 	<link rel="stylesheet" href="35mm/css/bootstrap.min.css"/>
@@ -44,8 +44,8 @@
       <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       </ul>
 
-	  <form class="d-flex">
-      	<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+	  <form class="d-flex" action="/search" >
+      	<input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
       	<button class="btn btn-secondary" type="submit">Search</button>
       </form>
 
