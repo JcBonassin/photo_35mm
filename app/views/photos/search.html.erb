@@ -5,17 +5,20 @@
 
 <% if @photos.length > 0 %>
 
-<div class= "center-this1"> <strong><h2>Search Results</h2></strong></div>
-
+<div class= "center-this1"> <strong><h2>Search Results</h2></strong>
+</p>
+<%= @photos.count %> Photos found 
+</p>
+</div>
 <div class="gallery__page">
               <div class="gallery__warp">   
                 <div class="row">
                 <% @photos.each do |photo|  %> 
                   <div class="col-lg-3 col-md-4 col-sm-6">
                     <%= link_to photo do %>
-                        <%= photo.title %>
+                      <!--  <%= photo.title %>-->
                         <%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
-                        <small><%= link_to "By #{photo.user.slug}", photo.user %> </small>
+                       <!--  <small><%= link_to "By #{photo.user.slug}", photo.user %> </small>-->
                     <% end %>     
                   </div>
                 <% end %>

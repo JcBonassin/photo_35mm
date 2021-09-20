@@ -41,19 +41,19 @@
 
     <p>
     <% if current_user.id == @photo.user_id %>
-    <%= link_to 'Edit', edit_photo_path(@photo) %> |
+   <!-- <%= link_to 'Edit', edit_photo_path(@photo) %> |-->
     <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
-    <%= render 'photos/form_b' %>
+    <!-- <%= render 'photos/form_b' %>-->
     <% end %>
     </p>
 
-    <p> 
+   <!-- <p> 
     <strong>Tags:</strong>
       <%= raw @photo.tag_list.map { |t| link_to t, label_path(t)}.join('| ')%>|
     <% @photo.labels.each do |label| %>
     <%= link_to label.tag, added_tags_path(label) %>|
     <% end %>
-    </p>
+    </p>-->
     
     </div>
   </div>

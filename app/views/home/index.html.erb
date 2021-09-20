@@ -5,7 +5,7 @@
 </div>
 
 <% if user_signed_in? %>
-  <div class= "center-this">
+  <div class= "center-this2">
   <% if current_user.sign_in_count > 0 %>
     <h2>Welcome <%= current_user.first_name.capitalize %></h2>
    <% current_user.update_attribute(:sign_in_count, 0)%>
@@ -23,27 +23,13 @@
 	<% @photos.each do |photo|  %> 
       <%= link_to photo do %>
          <%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
-         <small><%= link_to "By #{photo.user.slug.capitalize}", photo.user %></small>
+        <!--  <small><%= link_to "By #{photo.user.slug.capitalize}", photo.user %></small>-->
       <% end %>     
 	  <% end %>
     </div>
   </div>
 </div>
 
-
-
-	<!-- About Page end -->
-
-	<!-- Search Begin -->
-	<div class="search-model">
-		<div class="h-100 d-flex align-items-center justify-content-center">
-			<div class="search-close-switch">+</div>
-			<form class="search-model-form">
-				<input type="text" id="search-input" placeholder="Search here.....">
-			</form>
-		</div>
-	</div>
-	<!-- Search End -->
 
 <style>
   * {
@@ -79,6 +65,15 @@
     margin-top: 8px;
     vertical-align: middle;
   }
+
+  .center-this2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 20vh;
+     }
   
 </style>
 

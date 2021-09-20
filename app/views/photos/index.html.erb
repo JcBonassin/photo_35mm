@@ -15,9 +15,9 @@
                 <% @photos.each do |photo|  %> 
                   <div class="col-lg-3 col-md-4 col-sm-6">
                     <%= link_to photo do %>
-                        <%= photo.title %>
+                      <!--   <%= photo.title %>-->
                         <%= image_tag photo.image_url, class: "gallery__item fresco", data_fresco_group: "gallery" %>
-                        <small><%= link_to "By #{photo.user.slug}", photo.user %> </small>
+                      <!--  <small><%= link_to "By #{photo.user.slug}", photo.user %> </small>-->
                     <% end %>     
                   </div>
                 <% end %>
@@ -28,7 +28,7 @@
  <% else %>
  <div class= "center-this">
  <p>
-    <strong><h2>Our Awesome Community</h2></strong>
+    <strong><h2>Out Awesome Community :)</h2></strong>
   </p>
 <% end %>
 </div>

@@ -27,7 +27,6 @@ class LabelsController < ApplicationController
       @matches = @label.find_by_label
     end 
 
-
     def new
         #@photo = Photo.find(params[:id])
         @photo = Photo.friendly.find(params[:photo_id])
