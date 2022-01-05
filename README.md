@@ -11,7 +11,7 @@ This Ruby on Rails based webapp was built to upload photos, add tags and share i
 
 So what can I do with this gem: 
 
-- Updload photos, share, tag, like and delete and search for them.
+- Upload photos, share, tag, like and delete and search for them.
 
 ## Important information 
 
